@@ -82,7 +82,7 @@ fn get_rand_ymd(y_cap: Option<u16>) -> (u16, u16, u16) {
     let day_cap = match Months::from(month) {
         M::January | M::March | M::May | M::July | M::August | M::October | M::December => 31,
         M::February => {
-            // February mumbo-jumbo
+            // February mumbo-jumbo, check if it's a leap year
             if (year % 4 == 0) && (year % 100 != 0 || year % 400 == 0) {
                 29
             } else {
