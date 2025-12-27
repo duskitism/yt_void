@@ -73,7 +73,9 @@ static YMD_NOW: LazyLock<(u16, u16, u16)> = LazyLock::new(|| {
 });
 
 fn get_rand_ymd(y_cap: Option<u16>) -> (u16, u16, u16) {
-    let year = rand::random_range(y_cap.unwrap_or(2008)..=YMD_NOW.0); // current year
+    const DEFAULT_YEAR_CAP: u16 = 2008;
+
+    let year = rand::random_range(y_cap.unwrap_or(DEFAULT_YEAR_CAP)..=YMD_NOW.0); // current year
     let month = rand::random_range(1..=12u16);
 
     use Months as M;
